@@ -9,32 +9,62 @@ yarn create next-app --typescript
 ### TailwindCSS
 https://www.kyrelldixon.com/blog/setup-nextjs-with-tailwindcss-and-typescript
 
-tailwind.config.js
-```js
-module.exports = {
-	content: [
-		'./pages/**/*.{js,ts,jsx,tsx}',
-		'./components/**/*.{js,ts,jsx,tsx}',
-	],
-	darkMode: 'class',
-	plugins: [require('tailwindcss-safe-area')],
-}
 
-// obs: tive que instalar > npm i tailwindcss-safe-area
+> npm i -D postcss-preset-env tailwindcss
+
+> npx tailwind init
+
+> touch postcss.config.js
+
+
+next.config.js
+```js
+// PWA E TAMBEM O TAILWIND
+
+
+const withPWA = require("next-pwa");
+
+module.exports = withPWA({
+  pwa: {
+    dest: "public",
+    register: true,
+    skipWaiting: true,
+    disable: process.env.NODE_ENV === 'development'
+  },
+  plugins: [
+    'tailwindcss',
+    'postcss-preset-env',
+  ],
+});
 
 ```
 
+
+
+styles/index.css
+```css
+/* purgecss start ignore */
+@tailwind base;
+@tailwind components;
+/* purgecss end ignore */
+@tailwind utilities;
+
+
+```
+
+_app.tsx
+```js
+
+import '../styles/index.css'
+
+```
+
+> npm i -D @fullhuman/postcss-purgecss
+
+
+
 postcss.config.js
 ```js
-// module.exports = {
-// 	plugins: {
-// 		tailwindcss: {},
-// 		autoprefixer: {},
-// 	},
-// }
-
-
-
 
   module.exports = {
     plugins: [
@@ -54,6 +84,28 @@ postcss.config.js
       'postcss-preset-env',
     ],
   }
+
+
+```
+
+
+
+
+tailwind.config.js
+```js
+module.exports = {
+	content: [
+		'./pages/**/*.{js,ts,jsx,tsx}',
+		'./components/**/*.{js,ts,jsx,tsx}',
+	],
+	darkMode: 'class',
+	plugins: [require('tailwindcss-safe-area')],
+}
+
+// obs: tive que instalar > npm i tailwindcss-safe-area
+
+```
+
 
 ```
 
