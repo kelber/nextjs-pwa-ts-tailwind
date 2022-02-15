@@ -7,4 +7,8 @@ module.exports = withPWA({
     skipWaiting: true,
     disable: process.env.NODE_ENV === 'development'
   },
+  plugins: [
+    'tailwindcss',
+    'postcss-preset-env',
+  ],
 });
