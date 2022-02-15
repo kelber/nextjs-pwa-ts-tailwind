@@ -14,7 +14,7 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <h1 className={'text-gray-700 text-6xl font-thin'}>
-         Parcerias Digitais
+        NextJS + PWA + Tailwind + Docker
         </h1>
 
       </main>
