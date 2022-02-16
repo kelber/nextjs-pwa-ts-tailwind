@@ -13,8 +13,8 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={'text-gray-700 text-6xl font-thin'}>
-        NextJS + PWA + Tailwind + Docker
+        <h1 className={'text-pink-600 text-6xl font-thin'}>
+        <span className={'text-pink-700'}>*</span> NextJS + PWA + Tailwind + Docker  <span className={'text-pink-700'}>*</span>
         </h1>
 
       </main>

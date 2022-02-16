@@ -107,7 +107,6 @@ module.exports = {
 ```
 
 
-```
 
 
 
@@ -120,6 +119,91 @@ https://dev.to/byteslash/how-to-create-a-pwa-with-next-js-4dbm
 https://www.youtube.com/watch?v=ARNN_zmrwcw
 
 
+> npm i next-pwa
+
+
+#### generate manifest.json
+https://www.simicart.com/manifest-generator.html/
+
+obs: arquivo download vem manifest.webmanifest mude pra manifest.json somente
+
+
+public/manifest.json
+```js
+{
+    "theme_color": "#f69435",
+    "background_color": "#F2F2F2",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/",
+    "name": "Parcerias Digitais",
+    "short_name": "Parcerias Digitais",
+    "description": "Parcerias Digitais",
+    "icons": [
+        {
+            "src": "/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-256x256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-384x384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
+
+```
+
+
+pages/_document.tsx
+```js
+import Document, { Html, Head, Main, NextScript } from "next/document";
+
+class MyDocument extends Document {
+  render() {
+    return (
+      <Html>
+        <Head>
+          <link rel="manifest" href="/manifest.json" />
+          <link rel="apple-touch-icon" href="/icon.png"></link>
+          <meta name="theme-color" content="#fff" />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
+  }
+}
+
+export default MyDocument;
+
+```
+
+
+.gitignore
+```js
+# PWA files
+**/public/sw.js
+**/public/workbox-*.js
+**/public/worker-*.js
+**/public/sw.js.map
+**/public/workbox-*.js.map
+**/public/worker-*.js.map
+
+```
 
 > npm run build
 > npm run start
