@@ -207,3 +207,33 @@ export default MyDocument;
 
 > npm run build
 > npm run start
+
+
+#### Docker
+
+Dockerfile
+```js
+FROM node:14.15.4-alpine3.12
+
+USER node
+
+WORKDIR /home/node/app
+
+```
+
+
+docker.compose.yaml
+```yaml
+version: '3'
+
+services:
+
+  app:
+    build: .
+    entrypoint: sh -c "npm install && npm run dev"
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/home/node/app
+
+```
